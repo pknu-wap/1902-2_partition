@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="top_container">
+            <div class="head1">Partition</div>
+            <div class="head2">당신의 모임을 조금 더 편리하게</div>
+        </div>
+        <form action="register" method="POST" class="sign_in-form">
+            <h2>Sign Up</h2>
+            <div class="txtb">
+                <input type="text" name="username">
+                <span data-placeholder="Username"></span>
+            </div>
+
+            <div class="txtb">
+                <input type="email" name="email">
+                <span data-placeholder="E-Mail"></span>
+            </div>
+
+            <div class="txtb">
+                <input type="password" name="password">
+                <span data-placeholder="Password"></span>
+            </div>
+
+            <div class="txtb">
+                <input type="password" name="confirm_password">
+                <span data-placeholder="Confirm Password"></span>
+            </div>
+            <input type="submit" class="logbtn" value="Sign up">
+
+        </form>
+        <script type="text/javascript">
+            $(".txtb input").on("focus", function() {
+                $(this).addClass("focus");
+            });
+
+            $(".txtb input").on("blur", function() {
+                if ($(this).val() == "")
+                    $(this).removeClass("focus");
+            });
+        </script>
+        <%  if(!locals.bool) { %>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ㅂㅈㄷㅂㅈㄷㅂㅈㄷ',
+                    text: 'ㅂㅈㄷ'
+                })
+            </script>
+            <% } %>
+    </div>
+
+</body>
+
+</html>

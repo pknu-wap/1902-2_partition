@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Partition</title>
+
+    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/sweetalert2.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="/node_modules/promise-polyfill/dist/polyfill.min.js"></script>
+    <script src="/javascripts/sweetalert2.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top_container">
+            <div class="head1">Partition</div>
+            <div class="head2">당신의 모임을 조금 더 편리하게</div>
+        </div>
+        <form action="login" method="POST" class="login-form">
+            <h2>Sign In</h2>
+            <div class="txtb">
+                <input type="text" name="username">
+                <span data-placeholder="Username"></span>
+            </div>
+
+            <div class="txtb">
+                <input type="password" name="password">
+                <span data-placeholder="Password"></span>
+            </div>
+
+            <input type="submit" class="logbtn" value="Sign in">
+
+            <div class="bottom-text">
+                Don`t have account? <a href="register">Sign up</a>
+            </div>
+        </form>
+        <script type="text/javascript">
+            $(".txtb input").on("focus", function() {
+                $(this).addClass("focus");
+            });
+
+            $(".txtb input").on("blur", function() {
+                if ($(this).val() == "")
+                    $(this).removeClass("focus");
+            });
+        </script>
+        <%  if(!locals.bool) { %>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login failed',
+                    text: 'Confrim your Password!'
+                })
+            </script>
+            <% } %>
+    </div>
+
+</body>
+
+</html>
