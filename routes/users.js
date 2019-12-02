@@ -13,11 +13,11 @@ router.get('/', function(req, res, next) {
         res.redirect('users/homepage');
     // res.send('welcome partition!');
 });
-// ?šŒ?›ê°??… GET
+// íšŒì›ê°€ì… GET
 router.get('/register', function(req, res, next) {
     res.render('register', { bool: true });
 });
-// ?šŒ?›ê°??… POST
+// íšŒì›ê°€ì… POST
 router.post('/register', async function(req, res, next) {
     let body = req.body;
 
@@ -27,7 +27,7 @@ router.post('/register', async function(req, res, next) {
     let inputPassword = body.password;
     let salt = Math.round((new Date().valueOf() * Math.random())) + "";
     let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
-// db¿¡ ÀúÀå 
+    // db ì €ì¥ 
     let result = models.users.create({
             name: body.username,
             email: body.email,
@@ -44,14 +44,14 @@ router.post('/register', async function(req, res, next) {
         });
         // db
 });
-// ë¡œê·¸?¸ GET
+// ë¡œê·¸ì¸ GET
 router.get('/login', function(req, res, next) {
     if (!req.session.name)
         res.render('login', { bool: true });
     else
         res.redirect('homepage');
 });
-// ë¡œê·¸?¸ POST
+// ë¡œê·¸ì¸ POST
 router.post('/login', async function(req, res, next) {
     let body = req.body;
 
@@ -80,6 +80,7 @@ router.post('/login', async function(req, res, next) {
     }
     // db
 });
+
 // welcome
 router.get('/welcome', function(req, res, next) {
     if (!req.session.name)
@@ -87,28 +88,10 @@ router.get('/welcome', function(req, res, next) {
     else
         res.render('homepage', { name: req.session.name });
 });
-// GET ë°©ì‹?œ¼ë¡? / ê²½ë¡œ?— ? ‘?†?•˜ë©? ?‹¤?–‰ ?¨
-router.get('/', function(req, res) {
-    fs.readFile('index.html', function(error, data) {
-        if (error) {
-            console.log(error);
-        } else {
-            // html?ŒŒ?¼?´?¼?Š” ê²ƒì„ ?•Œ? ¤?•¼?•˜ê¸? ?•Œë¬¸ì— ?—¤?”?— ?•´?‹¹ ?‚´?š©?„ ?‘?„±?•´?„œ ë³´ë‚´ì¤?
-            res.writeHead(200, {
-                'Content-Type': 'text/html'
-            });
 
-            // ?—¤?”ë¥? ?‘?„±?–ˆ?œ¼ë©? ?´? œ html ?°?´?„°ë¥? ë³´ë‚´ì¤?
-            res.write(data);
 
-            // ëª¨ë‘ ë³´ëƒˆ?œ¼ë©? ?™„ë£Œë?Œ?„ ?•Œë¦?
-            // ë°˜ë“œ?‹œ ?•´ì¤˜ì•¼?•¨
-            res.end(data);
-        }
-    });
-});
 
-//  ë¡œê·¸?•„?›ƒ
+//  ë¡œê·¸ì•„ì›ƒ
 router.get('/logout', function(req, res, next) {
     req.session.destroy(function(err) {
         res.redirect('welcome');

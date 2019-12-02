@@ -19,11 +19,16 @@ socket.on('connect', function () {
 
 /* 서버로부터 데이터 받은 경우 */
 socket.on('update', function (data) {
-    var chat = document.getElementById('chat')
+    // var chat = document.getElementById('chat')
 
     var message = document.createElement('div')
     var node = document.createTextNode(`${data.name}: ${data.message}`)
     var className = ''
+    var brdivtag = document.createElement('div')
+    var brtag = document.createElement('br')
+
+    var $chat = $('#chat')
+    
 
     // 타입에 따라 적용할 클래스를 다르게 지정
     switch (data.type) {
@@ -40,9 +45,9 @@ socket.on('update', function (data) {
             break
     }
 
-    message.classList.add(className)
-    message.appendChild(node)
-    chat.appendChild(message)
+    $chat.append(`<div class="anotherMsg"><span class="anotherName">${data.name}</span><span class="${className}">${data.message}</span><br></div>`)
+
+    $chat.scrollTop($chat[0].scrollHeight - $chat[0].clientHeight);
 })
 
 /* 메시지 전송 함수 */
@@ -56,14 +61,25 @@ function send() {
     // 내가 전송할 메시지 클라이언트에게 표시
     var chat = document.getElementById('chat')
     var msg = document.createElement('div')
+    var brdivtag = document.createElement('div')
+    var brtag = document.createElement('br')
     var node = document.createTextNode(message)
-    msg.classList.add('me')
-    msg.appendChild(node)
-    chat.appendChild(msg)
+    var $chat = $('#chat')
+
+    $chat.append(`<div class="myMsg"><span class="msg">${message}</span><br><br></div>`)
+    $chat.scrollTop($chat[0].scrollHeight - $chat[0].clientHeight);
 
     // 서버로 message 이벤트 전달 + 데이터와 함께
     socket.emit('message', {
         type: 'message',
         message: message
     })
+}
+
+function enterkey() {
+    if (window.event.keyCode == 13) {
+
+        // 엔터키가 눌렸을 때 실행할 내용
+        send();
+    }
 }

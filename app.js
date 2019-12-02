@@ -1,18 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
-var ejsLint = require('ejs-lint');
-var http = require('http');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const ejsLint = require('ejs-lint');
+const http = require('http');
 
-var app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-var models = require("./models/index.js");
+const app = express();
+
+const models = require("./models/index.js");
+
+// var -> const
 
 models.sequelize.sync().then(() => {
     console.log(" DB connected");
@@ -83,15 +86,31 @@ const server = http.createServer(app);
 // 생성된 서버를 socket.io에 바인딩
 const io = socket(server);
 
-// const hostname = '192.168.43.70'
-// const port = 8080;
-
-// app.listen(port, function() {
-//     console.log('Server Start, Port : ' + port);
-// });
+const hostname = '192.168.1.248'
+const port = 8080;
 
 app.use(express.static(__dirname + '/public'));
 
+// GET 방식으로 / 경로에 접속하면 실행 됨
+app.get('/', function (req, res) {
+    fs.readFile('index.html', function (error, data) {
+        if (error) {
+            console.log(error);
+        } else {
+            // html파일이라는 것을 알려야하기 때문에 헤더에 해당 내용을 작성해서 보내줌
+            res.writeHead(200, {
+                'Content-Type': 'text/html'
+            });
+
+            // 헤더를 작성했으면 이제 html 데이터를 보내줌
+            res.write(data);
+
+            // 모두 보냈으면 완료됐음을 알림
+            // 반드시 해줘야함
+            res.end(data);
+        }
+    });
+});
 
 // on은 소켓에서 해당 이벤트를 받으면 콜백함수가 실행됨
 // connection이라는 이벤트가 발생할 경우 콜백함수가 실행됨
@@ -136,8 +155,9 @@ io.sockets.on('connection', function(socket) {
     })
 })
 
-// 서버를 8080포트로 listen
-// server.listen(port, hostname, function() {
-//     console.log('서버 실행중...')
-// })
+//서버를 8080포트로 listen
+server.listen(port, hostname, function() {
+    console.log('서버 실행중...')
+})
+
 module.exports = app;
