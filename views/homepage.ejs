@@ -9,9 +9,6 @@
         maximum-scale=1.0, 
         minimum-scale=1.0, 
         width=device-width">
-    <meta name="author" content="webstoryboy">
-    <meta name="description" content="반응형 사이트">
-    <meta name="keywords" content="minsu">
     <title>☀PartitionProject☃</title>
 
     <!-- style -->
@@ -23,13 +20,9 @@
 
     <!-- 파비콘 -->
     <link rel="shortcut icon" href="/icon/favicon-152.png">
-    <link rel="apple-touch-icon-precomposed" href="/icon/favicon-152.png">
     <link rel="icon" href="/path/to/favicon.png">
     <link rel="icon" href="/icon/favicon-16.png" sizes="16x16">
     <link rel="icon" href="/icon/favicon-32.png" sizes="32x32">
-    <link rel="icon" href="/icon/favicon-48.png" sizes="48x48">
-    <link rel="icon" href="/icon/favicon-64.png" sizes="64x64">
-    <link rel="icon" href="/icon/favicon-128.png" sizes="128x128">
 
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Vibes&display=swap" rel="stylesheet">
@@ -149,43 +142,41 @@
                 <section id="cont_left">
                     <h3 class="ir_su">반응형 사이트 왼쪽 컨텐츠</h3>
                     <article class="column col1">
-                        <h4 class="col_tit">Menu</h4>
-                        <p class="col_desc">어떤 기능을 넣어볼까</p>
-                        <!-- 메뉴-->
+                        <h4 class="col_tit">메뉴</h4>
+                        <p class="col_desc">채팅 관련 메뉴입니다.</p>
                         <div class="menu">
                             <ul>
-                                <li><a href="#">Cafe <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-                                <li><a href="#">Tutorial <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-                                <li><a href="#">WebSite <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-                                <li><a href="#">Reference <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-                                <li><a href="#">CSS3 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-                                <li><a href="#">HTML5 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">다른 그룹으로 가기<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+                                    
+                                </li>
+                                <li><a href="#">참여중인 인원<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+                                    <div id="member">
+                                        
+                                    </div>
+                                </li>
+                                <li><a href="#">업로드된 파일 기록<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+
+                                </li>
                             </ul>
                         </div>
-                        <!-- //메뉴-->
                     </article>
-                    <!-- //col1-->
-                    <!-- <article class="column col2">
-                        
-                    </article>
-                    <article class="column col3">
-
-                    </article> -->
                 </section>
 
                 <section id="cont_center">
                 
                     <article class="column col5">
-                        <h4 class="col_tit">☀ 일정 공유</h4>
+                        <h4 class="col_tit">그룹 채팅</h4>
                         <p class="col_desc">채팅을 통해 일정을 공유하세요!!</p>
                         <div id="chat_main">
                             <div id="chat">
                                 <!-- 채팅 메시지 영역 -->
                                 
                             </div>
-                            <div>
-                                <input onkeyup="enterkey();" type="text" id="test" placeholder="메시지를 입력해주세요..">
-                                <button class="chat_btn" onclick="send()">Send</button>
+                            <div class="chat_area">
+                                <div class="chat_desc">
+                                    <input onkeyup="enterkey();" type="text" id="test" placeholder="메시지를 입력해주세요..">
+                                </div>
+                                <button class="chat_btn" onclick="send()">전송</button>
                             </div>
                         </div>
                     </article>
@@ -193,7 +184,7 @@
 
                 <section id="cont_right">
                     <article class="column col7">
-                        <h4 class="col_tit">WhatToDo</h4>
+                        <h4 class="col_tit">메모 보드</h4>
                         <p class="col_desc">해야 할 일들 입니다.</p>
                         <!-- 게시판-->
                         <div class="notice1">

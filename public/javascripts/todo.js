@@ -3,7 +3,7 @@ const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.querySelector(".js-toDoList");
 
 // LS == local storage
-// ·ÎÄÃ ½ºÅä¸®Áö¿¡´Â ¿À·ÎÁö string¸¸ ÀúÀå °¡´É
+// ë¡œì»¬ ìŠ¤í† ë¦¬ì§€ì—ëŠ” ì˜¤ë¡œì§€ stringë§Œ ì €ì¥ ê°€ëŠ¥
 const TODOS_LS = "toDos";
 
 function deleteToDo(event) {
@@ -11,24 +11,24 @@ function deleteToDo(event) {
     const li = btn.parentNode;
     toDoList.removeChild(li);
 
-    // li ¸»°íµµ ÁøÂ¥ toDos¿¡¼­ »èÁ¦ ÇØ¾ßÇÔ.
-    // ÀÌ°ÅÇÏ¸é id === 1ÀÎ °ª Àâ¾Æ³½´Ù.
-    // ÀÌ¶§ li¿¡ ¾ø´Â°ª »èÁ¦ÇÏ¸é ±×°Ô id === 1ÀÎ °ªÀÓ.
+    // li ë§ê³ ë„ ì§„ì§œ toDosì—ì„œ ì‚­ì œ í•´ì•¼í•¨.
+    // ì´ê±°í•˜ë©´ id === 1ì¸ ê°’ ì¡ì•„ë‚¸ë‹¤.
+    // ì´ë•Œ liì— ì—†ëŠ”ê°’ ì‚­ì œí•˜ë©´ ê·¸ê²Œ id === 1ì¸ ê°’ì„.
     const cleanToDos = toDos.filter(function (toDo) {
-        // ¸ğµç toDos°¡ liÀÇ id¿Í °°Áö ¾ÊÀ»¶§¸¸ ÃßÃâÇÔ
-        // li.id°¡ stringÀÌ¹Ç·Î Çüº¯È¯
+        // ëª¨ë“  toDosê°€ liì˜ idì™€ ê°™ì§€ ì•Šì„ë•Œë§Œ ì¶”ì¶œí•¨
+        // li.idê°€ stringì´ë¯€ë¡œ í˜•ë³€í™˜
         return toDo.id !== parseInt(li.id);
     });
-    // ±³Ã¼ÇØÁÜ
+    // êµì²´í•´ì¤Œ
     //console.log(cleanToDos);
     toDos = cleanToDos;
     saveToDos();
 }
 
-// ÇØ¾ß ÇÒ ÀÏÀ» »ı¼ºÇÒ¶§¸¶´Ù toDos arr¿¡´Ù°¡ Áı¾î³Ö´Â´Ù.
+// í•´ì•¼ í•  ì¼ì„ ìƒì„±í• ë•Œë§ˆë‹¤ toDos arrì—ë‹¤ê°€ ì§‘ì–´ë„£ëŠ”ë‹¤.
 let toDos = [];
 
-// JSON.stringfy´Â object¸¦ stringÀ¸·Î ¹Ù²ãÁÜ
+// JSON.stringfyëŠ” objectë¥¼ stringìœ¼ë¡œ ë°”ê¿”ì¤Œ
 function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
@@ -38,7 +38,7 @@ function paintToDo(text) {
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
-    delBtn.innerText = "Delete"; // delbtnÀ» ¸¸µç´Ù.
+    delBtn.innerText = "â›Œ "; // delbtnì„ ë§Œë“ ë‹¤.
     delBtn.addEventListener("click", deleteToDo);
     span.innerText = text;
     li.appendChild(delBtn);

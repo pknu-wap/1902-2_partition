@@ -21,6 +21,8 @@ socket.on('connect', function () {
 socket.on('update', function (data) {
     // var chat = document.getElementById('chat')
 
+    // data.name은 참여중인 인원
+
     var message = document.createElement('div')
     var node = document.createTextNode(`${data.name}: ${data.message}`)
     var className = ''
@@ -28,6 +30,7 @@ socket.on('update', function (data) {
     var brtag = document.createElement('br')
 
     var $chat = $('#chat')
+    var $member = $('#member')
     
 
     // 타입에 따라 적용할 클래스를 다르게 지정
@@ -43,9 +46,16 @@ socket.on('update', function (data) {
         case 'disconnect':
             className = 'disconnect'
             break
+
+        case 'name':
+            $member.append(`<div class="cur_mem">${className}</div>`)
+            break
     }
 
-    $chat.append(`<div class="anotherMsg"><span class="anotherName">${data.name}</span><span class="${className}">${data.message}</span><br></div>`)
+    
+    
+
+    $chat.append(`<div class="anotherMsg"><span class="anotherName"><strong>${data.name}</strong></span><span class="${className}">${data.message}</span><br></div>`)
 
     $chat.scrollTop($chat[0].scrollHeight - $chat[0].clientHeight);
 })
