@@ -24,7 +24,7 @@ body {
     color: white;
     position: relative;
     width: 360px;
-    height: 20px;
+    height: 40px;
     left: 50%;
     top: -5%;
     transform: translate(-50%, 50%);
@@ -33,14 +33,22 @@ body {
 .head1 {
     font-size: 70px;
     margin: 20px 0;
+    letter-spacing: 8px;
     position: relative;
     text-align: center;
+    font-weight: normal;
+    font-family: 'Comfortaa',
+    cursive;
 }
 
 .head2 {
-    font-size: 18px;
+    font-size: 15px;
     position: relative;
     text-align: center;
+    font-family: 'Jua',
+    sans-serif;
+    letter-spacing: 10px;
+    font-weight: normal;
 }
 
 .sign_in-form {

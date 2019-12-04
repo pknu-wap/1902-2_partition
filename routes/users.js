@@ -63,7 +63,9 @@ router.post('/register', async function(req, res, next) {
                 res.redirect('login');
             })
             .catch(err => {
-                res.send()
+                res.render('register', {
+                    bool : 5
+                })
                 console.log(err)
             });
     }

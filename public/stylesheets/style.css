@@ -751,6 +751,28 @@ body {
     padding-top: 8px;
 }
 
+#member{
+    display: none;
+}
+
+.nameList{
+    font-weight: bold;
+    color: rgb(18, 10, 87);
+    padding-left: 20px;
+    position: relative;
+}
+
+.nameList:before{
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #0a0c61;
+    position: absolute;
+    left: 2px;
+    top: 8px;
+}
+
 /* footer */
 
 .footer {
@@ -902,6 +924,7 @@ body {
         box-sizing: border-box;
     }
     #cont_right .column.col7 {
+        text-align: center;
         border-right: 1px solid #dbdbdb;
         border-bottom: 0;
     }
@@ -949,7 +972,7 @@ body {
     .header_press{
         /* height: 450px; */
         padding-top: 100px;
-        padding-bottom: 200px;
+        padding-bottom: 180px;
     }
     .title .btn {
         /* display: none; */
@@ -986,7 +1009,7 @@ body {
     .column.col1 .menu li a {
         color: rgb(8, 19, 80);
         /* text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); */
-        font-size: 16px;
+        font-size: 12px;
     }
     .column.col1 .menu li a i {
         display: none;
@@ -1024,12 +1047,21 @@ body {
     .square a:nth-child(5) {
         display: none;
     }
+
+    .my-calendar {
+        width: 300px;
+        max-height: 50px;
+    }
+
+    .my-calendar .clicked-date{
+        background: linear-gradient(90deg, rgba(43, 14, 78, 1) 0%, rgba(19, 35, 87, 1) 100%);
+    }
 }
 
 
 
 @media(max-width: 414px) {
     #chat_main{
-        width: 300px;
+        width: 330px;
     }
 }

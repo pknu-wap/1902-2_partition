@@ -130,4 +130,8 @@
         font-size: 80%;
         right: 50%;
     }
+
+    .app-picture {
+        display: none;
+    }
 }

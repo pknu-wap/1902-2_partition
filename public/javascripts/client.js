@@ -21,7 +21,8 @@ socket.on('connect', function () {
 socket.on('update', function (data) {
     // var chat = document.getElementById('chat')
 
-    // data.name은 참여중인 인원
+    // replace함수 사용
+    var nameList = data.message.replace("님이 접속하였습니다.", "")
 
     var message = document.createElement('div')
     var node = document.createTextNode(`${data.name}: ${data.message}`)
@@ -46,18 +47,21 @@ socket.on('update', function (data) {
         case 'disconnect':
             className = 'disconnect'
             break
-
-        case 'name':
-            $member.append(`<div class="cur_mem">${className}</div>`)
-            break
     }
 
-    
-    
-
     $chat.append(`<div class="anotherMsg"><span class="anotherName"><strong>${data.name}</strong></span><span class="${className}">${data.message}</span><br></div>`)
-
     $chat.scrollTop($chat[0].scrollHeight - $chat[0].clientHeight);
+
+    if (className === 'connect')
+    {
+        $member.append(`<div class="nameList">${nameList}<div>`)
+    }
+
+    if(className === 'disconnect')
+    {
+        $(".nameList").remove()
+    }
+
 })
 
 /* 메시지 전송 함수 */

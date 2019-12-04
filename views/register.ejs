@@ -7,6 +7,11 @@
 
     <link rel="stylesheet" href="/stylesheets/register.css">
     <link rel="stylesheet" href="/stylesheets/sweetalert2.css">
+
+    <!-- 웹폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="/javascripts/sweetalert2.js"></script>
 
@@ -89,7 +94,15 @@
                             })
                         </script>
 
-                        <% } %>
+                        <% } else if(locals.bool == 5) { %>
+                            <script>
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Sign up failed',
+                                    text: 'Fill in the form'
+                                })
+                            </script>
+                            <% } %>
     </div>
 
 </body>

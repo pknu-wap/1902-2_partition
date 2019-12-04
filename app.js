@@ -86,7 +86,7 @@ const server = http.createServer(app);
 // 생성된 서버를 socket.io에 바인딩
 const io = socket(server);
 
-const hostname = '172.20.10.2'
+const hostname = '172.20.10.3'
 const port = 8080;
 
 app.use(express.static(__dirname + '/public'));

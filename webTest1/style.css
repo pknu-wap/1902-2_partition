@@ -120,7 +120,7 @@
     }
 
     .app-picture{
-        display: none;
+        
     }
 }
 
@@ -134,4 +134,5 @@
         font-size: 80%;
         right: 50%;
     }
+
 }

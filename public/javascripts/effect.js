@@ -16,6 +16,23 @@ $(".btn").click(function (e) {
     }
 });
 
+$(".curMem").click(function (e) {
+    e.preventDefault(); // href="#"을 깨준다.
+    $("#member").slideToggle();
+
+    // 버튼누르면 open 클래스 만들어줌
+    $(".curMem").toggleClass("open");
+
+    if ($(".curMem").hasClass("open")) {
+        // open이 있을 때
+        // attr는 속성 변경 메소드임.
+        $(".curMem").find("i").attr("class", "fa fa-angle-double-up");
+    } else {
+        // open이 없을 때
+        $(".curMem").find("i").attr("class", "fa fa-angle-double-down");
+    }
+});
+
 $(window).resize(function () {
     var wWidth = $(window).width();
     if (wWidth > 600) {
