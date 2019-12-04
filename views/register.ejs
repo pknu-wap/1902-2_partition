@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="/stylesheets/login.css">
+    <title>partition</title>
+
+    <link rel="stylesheet" href="/stylesheets/register.css">
     <link rel="stylesheet" href="/stylesheets/sweetalert2.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
-    <script src="/node_modules/promise-polyfill/dist/polyfill.min.js"></script>
     <script src="/javascripts/sweetalert2.js"></script>
 
 </head>
@@ -40,7 +40,9 @@
                 <span data-placeholder="Confirm Password"></span>
             </div>
             <input type="submit" class="logbtn" value="Sign up">
-
+            <div class="bottom-text">
+                Already have an account? <a href="login">Sign in</a>
+            </div>
         </form>
         <script type="text/javascript">
             $(".txtb input").on("focus", function() {
@@ -53,39 +55,41 @@
             });
         </script>
         <%if(locals.bool == 1) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Sign up failed',
-                text: ' Invalid ID & E-Mail. Please try again'
-            })
-        </script>
-        <% }else if(locals.bool == 2) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Sign up failed',
-                text: ' Invalid E-Mail. Please try again'
-            })
-        </script>
-        <% }else if(locals.bool == 3) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Sign up failed',
-                text: ' Invalid ID. Please try again'
-            })
-        </script>
-        <% }else if(locals.bool == 4) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Sign up failed',
-                text: 'Passwords do NOT match!'
-            })
-        </script>
-        <% } %>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sign up failed',
+                    text: ' Invalid ID & E-Mail. Please try again'
+                })
+            </script>
+            <% }else if(locals.bool == 2) { %>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sign up failed',
+                        text: ' Invalid E-Mail. Please try again'
+                    })
+                </script>
 
+                <% }else if(locals.bool == 3) { %>
+                    <script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Sign up failed',
+                            text: ' Invalid ID. Please try again'
+                        })
+                    </script>
+
+                    <% }else if(locals.bool == 4) { %>
+                        <script>
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Sign up failed',
+                                text: 'Passwords do NOT match!'
+                            })
+                        </script>
+
+                        <% } %>
     </div>
 
 </body>

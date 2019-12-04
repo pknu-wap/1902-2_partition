@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     if (!req.session.name)
         return res.redirect('users/login');
     else
-        res.redirect('users/homepage');
+        res.redirect('users/welcome');
     // res.send('welcome partition!');
 });
 // ?��?���??�� GET
@@ -26,11 +26,11 @@ router.post('/register', async function(req, res, next) {
         }
     })
     let result2 = await models.users.findOne({
-        where: {
-            name: body.email
-        }
-    })
-    // invalid id & email 
+            where: {
+                name: body.email
+            }
+        })
+        // invalid id & email 
     if (result1 != null && result2 != null) {
         res.render('register', {
             bool: 1
@@ -66,26 +66,26 @@ router.post('/register', async function(req, res, next) {
                 res.send()
                 console.log(err)
             });
-        }
-        // db
+    }
+    // db
 });
 // 로그?�� GET
 router.get('/login', function(req, res, next) {
     if (!req.session.name)
         res.render('login', { bool: 0 });
     else
-        res.redirect('homepage');
+        res.redirect('welcome');
 });
 // 로그?�� POST
-router.post('/login', async function (req, res, next) {
+router.post('/login', async function(req, res, next) {
     let body = req.body;
 
     let result = await models.users.findOne({
-        where: {
-            name: body.username
-        }
-    })
-    // db
+            where: {
+                name: body.username
+            }
+        })
+        // db
     if (result == null) {
         return res.render("login", {
             bool: 2
@@ -100,7 +100,7 @@ router.post('/login', async function (req, res, next) {
             console.log("login succeeded");
             // session
             req.session.name = body.username;
-            req.session.save(function () {
+            req.session.save(function() {
                 return res.redirect('welcome');
             });
         } else {
@@ -115,7 +115,7 @@ router.post('/login', async function (req, res, next) {
 });
 
 // welcome
-router.get('/welcome', function (req, res, next) {
+router.get('/welcome', function(req, res, next) {
     if (!req.session.name)
         res.redirect('login');
     else
@@ -126,12 +126,9 @@ router.get('/welcome', function (req, res, next) {
 
 
 //  로그?��?��
-router.get('/logout', function (req, res, next) {
-    req.session.destroy(function (err) {
+router.get('/logout', function(req, res, next) {
+    req.session.destroy(function(err) {
         res.redirect('welcome');
     });
 });
-router.get('/home', function(req, res, next) {
-    res.render("home", { name: req.session.name })
-})
 module.exports = router;

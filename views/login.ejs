@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/stylesheets/login.css">
     <link rel="stylesheet" href="/stylesheets/sweetalert2.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
-    <script src="/node_modules/promise-polyfill/dist/polyfill.min.js"></script>
     <script src="/javascripts/sweetalert2.js"></script>
 </head>
 
@@ -47,22 +46,23 @@
             });
         </script>
         <%  if(locals.bool == 1) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Login failed',
-                text: 'Confrim your Password!'
-            })
-        </script>
-        <% }  else if(locals.bool == 2) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Login failed',
-                text: 'ID does not exist!'
-            })
-        </script>
-        <% } %>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sign in failed',
+                    text: 'Confrim your Password!'
+                })
+            </script>
+            <% }  else if(locals.bool == 2) { %>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sign in failed',
+                        text: 'ID does not exist!',
+                        footer: '<a href = "register">Sign Up! It`s quick and easy.</a>'
+                    })
+                </script>
+                <% } %>
     </div>
 
 </body>

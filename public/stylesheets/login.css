@@ -15,7 +15,6 @@ body {
     position: absolute;
     width: 700px;
     height: 700px;
-    /* background: crimson; */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -25,12 +24,10 @@ body {
     color: white;
     position: relative;
     width: 360px;
-    height: 0px;
-    /* background: crimson; */
+    height: 20px;
     left: 50%;
-    top: 0%;
+    top: -5%;
     transform: translate(-50%, 50%);
-    padding-top: 20px;
 }
 
 .head1 {
